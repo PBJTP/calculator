@@ -24,30 +24,32 @@ buttons.forEach(function(button) { // add listeners to numbers only
     });
 });
 
-operators.forEach(function(button) {
+operators.forEach(function(button) { //Operator buttons
     button.addEventListener('click', function(e) {
         data.operator = '';
         data.operator = this.value;
         data.num1 = Number(display.innerHTML);
         display.innerHTML = '0';
-
-
-        console.log(data.num1);
-        console.log(data.operator);
+        document.querySelector('#currentCalc').innerHTML = data.operator + " " + data.num1;
     })
 });
 
-equals.addEventListener('click', function() {
+equals.addEventListener('click', function() { //Equals Button
     if (!data.operator) {
         return;
     }
     data.num2 = Number(display.innerHTML);
     display.innerHTML = operate(data.operator, data.num1, data.num2);
+    document.querySelector('#currentCalc').innerHTML = data.num2 + " " + data.operator + " " + data.num1;
     data.num1 = display.innerHTML;
+    data.num2 = 0;
 })
 
 clearBtn.addEventListener('click', function() { //All Clear
     display.innerHTML = 0;
+    data.num1 = 0;
+    data.num2 = 0;
+    data.operator = '';
 });
 
 // decimal.addEventListener('click', function() {   !!!!!!!!!PROJECT FOR LATER!!!!!!!!!
