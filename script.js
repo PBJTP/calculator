@@ -8,7 +8,7 @@ let data = { //fancy data storage
 
 let buttons = document.querySelectorAll('.numberButton'); //select number buttons
 let clearBtn = document.querySelector('.clearButton'); // All clear button
-let delete = document.querySelector('.deleteButton'); //Delete button
+let backspace = document.querySelector('.deleteButton'); //Delete button
 let display = document.getElementById('display'); //display window
 
 display.maxLength = '8';
@@ -26,6 +26,16 @@ buttons.forEach(function(button) { // add listeners to numbers only
 clearBtn.addEventListener('click', function() { //All Clear
     display.innerHTML = 0;
 });
+
+backspace.addEventListener('click', function() {
+    let array = display.innerHTML.split('');
+    array.pop();
+    let newValue = array.join('');
+    display.innerHTML = newValue;
+    if (!display.innerHTML) {
+        display.innerHTML = '0';
+    }
+})
 
 function add (x,y) { //addition operator
     return x + y;
