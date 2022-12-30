@@ -2,13 +2,12 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>CSS TEST</h1>
-    <div id="display"></div>
-    <div id="button-container">
+    <div id="display" maxlength="8">0</div>
+    <div id="buttonContainer">
         <button id="1" class="numberButton" value="1">1</button>
         <button id="2" class="numberButton" value="2">2</button>
         <button id="3" class="numberButton" value="3">3</button>
@@ -19,8 +18,17 @@
         <button id="8" class="numberButton" value="8">8</button>
         <button id="9" class="numberButton" value="9">9</button>
         <button id="0" class="numberButton" value="0">0</button>
-        <button id="." class="numberButton" value=".">.</button>
-        <button id="=" class="numberButton" value="=">=</button>
+        <button id="." class="decimalButton" value=".">.</button>
+        <button id="=" class="equalButton" value="=">=</button>
+    </div>
+    <div id="operatorContainer">
+        <button id="delete" class="deleteButton" value="delete"><</button>
+        <button id="clear" class="clearButton" value="clear">AC</button>
+        <button id="+" class="opButton" value="+">+</button>
+        <button id="/" class="opButton" value="/">/</button>
+        <button id="*" class="opButton" value="*">*</button>
+        <button id="-" class="opButton" value="-">-</button>
     </div>
 </body>
+<script src="script.js"></script>
 </html>
