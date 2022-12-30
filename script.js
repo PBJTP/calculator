@@ -10,6 +10,7 @@ let clearBtn = document.querySelector('.clearButton'); // All clear button
 let backspace = document.querySelector('.deleteButton'); //Delete button
 let display = document.getElementById('display'); //display window
 let operators = document.querySelectorAll('.opButton');
+let equals = document.querySelector('.equalButton');
 
 display.maxLength = '8'; //DOESNT WORK
 
@@ -34,6 +35,15 @@ operators.forEach(function(button) {
         console.log(data.num1);
         console.log(data.operator);
     })
+});
+
+equals.addEventListener('click', function() {
+    if (!data.operator) {
+        return;
+    }
+    data.num2 = Number(display.innerHTML);
+    display.innerHTML = operate(data.operator, data.num1, data.num2);
+    data.num1 = display.innerHTML;
 })
 
 clearBtn.addEventListener('click', function() { //All Clear
