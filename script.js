@@ -12,7 +12,7 @@ let display = document.getElementById('display'); //display window
 let operators = document.querySelectorAll('.opButton');
 let equals = document.querySelector('.equalButton');
 
-display.maxLength = '8'; //DOESNT WORK
+display.maxLength = 8; //DOESNT WORK----------------------------------------------------------
 
 buttons.forEach(function(button) { // add listeners to numbers only
     button.addEventListener('click', function() {
@@ -24,14 +24,28 @@ buttons.forEach(function(button) { // add listeners to numbers only
     });
 });
 
+decimal.addEventListener('click', function() { // decimal button 
+    let arr = display.innerHTML.split('');
+    for (i = 0; i < arr.length; i++) { // checks for existinng decimal
+        if (arr[i] == '.') {
+            return;
+        }
+    }
+    if (display.innerHTML == '0') {
+        return;
+    } else {
+        display.innerHTML += this.value;
+    }
+});
+
 operators.forEach(function(button) { //Operator buttons
     button.addEventListener('click', function(e) {
         data.operator = '';
         data.operator = this.value;
         data.num1 = Number(display.innerHTML);
         display.innerHTML = '0';
-        document.querySelector('#currentCalc').innerHTML = data.operator + " " + data.num1;
-    })
+        document.querySelector('#currentCalc').innerHTML = data.num1 + data.operator;
+    });
 });
 
 equals.addEventListener('click', function() { //Equals Button
@@ -40,9 +54,10 @@ equals.addEventListener('click', function() { //Equals Button
     }
     data.num2 = Number(display.innerHTML);
     display.innerHTML = operate(data.operator, data.num1, data.num2);
-    document.querySelector('#currentCalc').innerHTML = data.num2 + " " + data.operator + " " + data.num1;
+    document.querySelector('#currentCalc').innerHTML = data.num2 + data.operator + data.num1 + '=';
     data.num1 = display.innerHTML;
     data.num2 = 0;
+    data.operator = '';
 })
 
 clearBtn.addEventListener('click', function() { //All Clear
@@ -50,9 +65,10 @@ clearBtn.addEventListener('click', function() { //All Clear
     data.num1 = 0;
     data.num2 = 0;
     data.operator = '';
+    document.querySelector('#currentCalc').innerHTML = '';
 });
 
-// decimal.addEventListener('click', function() {   !!!!!!!!!PROJECT FOR LATER!!!!!!!!!
+// decimal.addEventListener('click', function() {   
 //     let array = display.innerHTML.split();
 //     array.unshift('.');
 //     let newValue = array.join('');
@@ -97,6 +113,7 @@ function operate(operators, x, y) { // EQUALS BUTTON PROGRAM
     } else {
         return 'ERROR';
     }
-    data.operator = '';
 };
 
+function clearAfterCalc() {
+};

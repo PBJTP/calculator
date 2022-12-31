@@ -2,13 +2,19 @@ h1 {
     color: blue;
 }
 
+html {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #display {
     background-color: rebeccapurple;
     color: black;
     height: 100px;
-    width: 500px;
+    width: 400px;
     margin-bottom: 20px;
-    direction: rtl;
+    text-align: right;
     font-size: 80px;
 }
 
@@ -16,15 +22,40 @@ h1 {
     background-color: aqua;
     color: black;
     height: 60px;
-    width: 500px;
+    width: 400px;
     margin-bottom: 20px;
-    direction: rtl;
+    text-align: right;
     font-size: 40px;
 }
 
 button {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 90px;
     background-color: teal;
-    margin: 5px;
+    margin: 3px;
+    font-size: 40px;
+}
+
+#clear {
+    width: 190px;
+}
+
+#buttonContainer {
+    display: grid;
+    grid-template-columns: [col1-start] 0px [col2-start] 300px;
+    grid-template-rows: [row1-start] 0px [row2-start] 100px;
+    height:400px;
+    width: 400px;
+}
+
+#operatorContainer{
+    grid-column: col3-start;
+}
+
+#clearContainer{
+    grid-row: row1-start / row1-end;
+}
+
+#numContainer{
+    grid-row: row2-start;
 }
